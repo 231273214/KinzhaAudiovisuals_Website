@@ -1,32 +1,63 @@
 @import "tailwindcss";
 
+@theme inline {
+  --color-card: #d9d9d9;
+  --color-action: #373c6e;
+  --color-brand-red: #b00000;
+  --color-brand-red-dark: #7a0a0a;
+  --color-brand-soft: #d96a6a;
+  --color-surface: #272424;
+  --color-ink: #e8e6e6;
+  --color-muted: #a89c9c;
+
+  --font-sans: var(--font-space), sans-serif;
+  --font-display: var(--font-barlow), sans-serif;
+  --font-title: var(--font-inter), sans-serif;
+}
+
+@theme {
+  --animate-fade-in: fade-in 0.4s ease-out;
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
 :root {
-  /* Fuentes */
-  --font-nav: var(--font-space-grotesk), sans-serif;
-  --font-title: var(--font-barlow-condensed), sans-serif;
-  --font-body: var(--font-space-grotesk), sans-serif;
-
-  /* Colores principales */
-  --color-kinzha-red: #B00000;
-  --color-kinzha-dark: #292525;
-  --color-kinzha-text: #E6E6E6;
-  --color-kinzha-icon: #000000;
+  --slant: 0.24;
 }
 
-body {
-  background-color: var(--color-kinzha-dark);
-  color: var(--color-kinzha-text);
-  font-family: var(--font-body);
+@utility clip-slant {
+  clip-path: polygon(
+    calc(var(--slant) * 100%) 0,
+    100% 0,
+    calc(100% - var(--slant) * 100%) 100%,
+    0 100%
+  );
 }
 
-.font-nav {
-  font-family: var(--font-nav);
+@utility site-gradient {
+  background-image: linear-gradient(
+    180deg,
+    #b00000 0%,
+    #272424 30%,
+    #272424 82%,
+    #b00000 100%
+  );
 }
 
-.font-title {
-  font-family: var(--font-title);
-}
-
-.font-body {
-  font-family: var(--font-body);
+@layer base {
+  html {
+    background-color: var(--color-surface);
+  }
+  body {
+    @apply bg-surface font-sans text-ink antialiased;
+  }
 }
