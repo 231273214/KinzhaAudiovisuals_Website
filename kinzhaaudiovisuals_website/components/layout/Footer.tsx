@@ -4,10 +4,9 @@ import { NAV_LINKS, SOCIAL_LINKS } from "@/lib/navigation";
 
 export default function Footer() {
   return (
-    <footer className="w-full border-t border-white/10 bg-[#292525]">
+    <footer className="w-full">
       <Container className="flex flex-wrap items-center justify-between gap-6 py-8">
-        
-        <p className="font-display text-[clamp(1.4rem,3vw,2rem)] font-bold border-white/25 md:border-r md:pr-6 text-white">
+        <p className="border-white/25 font-display text-[clamp(1.4rem,3vw,2rem)] font-bold text-white md:border-r md:pr-6">
           KINZHA AUDIOVISUALS
         </p>
 
@@ -27,18 +26,17 @@ export default function Footer() {
         <ul className="flex flex-col gap-2 font-display font-semibold md:items-end">
           {SOCIAL_LINKS.map(({ href, label }) => (
             <li key={label}>
-              <a 
-                href={href} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="hover:text-[#B00000] transition-colors"
+              <a
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition-opacity hover:opacity-70"
               >
                 {label} ↗
               </a>
             </li>
           ))}
         </ul>
-
       </Container>
     </footer>
   );
