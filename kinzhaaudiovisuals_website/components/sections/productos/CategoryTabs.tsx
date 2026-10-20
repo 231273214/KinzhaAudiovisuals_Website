@@ -20,11 +20,13 @@ export default function CategoryTabs({ categories, active, onChange }: Props) {
             aria-pressed={selected}
             aria-label={label}
             title={label}
-            className={`relative size-11 shrink-0 rounded-full bg-neutral-500 transition-transform duration-300 ease-out md:size-16 ${
+            className={`relative size-11 shrink-0 overflow-hidden rounded-full bg-neutral-500 transition-transform duration-300 ease-out md:size-16 ${
               selected ? "-translate-y-4 scale-125 ring-[6px] ring-card" : "hover:scale-110"
             }`}
           >
-            <Image src={icon} alt="" fill sizes="64px" className="rounded-full object-cover" />
+            <span className="absolute inset-[12%]">
+              <Image src={icon} alt="" fill sizes="96px" className="object-contain" />
+            </span>
           </button>
         );
       })}

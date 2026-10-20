@@ -8,6 +8,7 @@ export type Project = {
   tags: string[];
   links: { label: string; href?: string }[]; 
   cover?: string;
+  href?: string;
 };
 
 export const PROJECTS: Project[] = [
@@ -34,7 +35,8 @@ export const PROJECTS: Project[] = [
     tags: ["Premiere", "Audio Experience", "Sound Design", "Narrative Podcast", "Cadence Universe"],
     links: [{ label: "Episodios" }, { label: "Spotify" }, { label: "Trailer" }, { label: "Lore" }],
     cover: "/proyectos/Textura_Papel.jpg",
-  },
+    href: "/proyectos/wiretap",
+},
   {
     id: "historia-cadence",
     number: 3,
@@ -46,6 +48,7 @@ export const PROJECTS: Project[] = [
     tags: ["Krita", "Comic ilustrado", "Cadence Universe"],
     links: [{ label: "Viñetas" }, { label: "Arte digital" }, { label: "Lore" }],
     cover: "/proyectos/Textura_Papel.jpg",
+    href: "/proyectos/comic",
   },
   {
     id: "cadence-animado",
