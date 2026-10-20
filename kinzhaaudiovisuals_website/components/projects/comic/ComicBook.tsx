@@ -1,8 +1,10 @@
 "use client";
 
-import Book from "@/components/projects/comic/Book";
+import dynamic from "next/dynamic";
 import PageView from "@/components/projects/comic/PageView";
 import { COMIC_CLOSING, COMIC_COVER, COMIC_SPREADS } from "@/lib/data/comic";
+
+const Book = dynamic(() => import("@/components/projects/comic/Book"), { ssr: false });
 
 const PAGES = [
   <PageView key="cover" page={COMIC_COVER} />,
@@ -16,7 +18,7 @@ const PAGES = [
 const SECTIONS = [
   { label: "Portada", target: 0 },
   ...COMIC_SPREADS.flatMap((spread, i) =>
-    spread.section ? [{ label: spread.section, target: i + 1 }] : [],
+    spread.section ? [{ label: spread.section, target: 2 * i + 1 }] : [],
   ),
 ];
 
@@ -31,8 +33,7 @@ export default function ComicBook() {
         {PAGES.map((page, i) => (
           <li
             key={i}
-            data-active="true"
-            className="group/page @container overflow-hidden rounded-lg bg-[#fbfbf9] text-black shadow-xl [--ts:1.5]"
+            className="@container overflow-hidden rounded-lg bg-[#fbfbf9] text-black shadow-xl [--ts:1.5]"
           >
             {page}
           </li>

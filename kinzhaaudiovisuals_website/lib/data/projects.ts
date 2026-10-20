@@ -54,12 +54,13 @@ export const PROJECTS: Project[] = [
     id: "cadence-animado",
     number: 4,
     title: "Cadence Animado",
-    kind: "Animación 2D",
-    heading: "Comic",
+    kind: "Animación 3D",
+    heading: "Animación",
     description:
-      "Serie en formato comic que funciona como la precuela oficial de Cadence. A través de registros de audio e interceptaciones, expande el universo narrativo revelando los eventos previos a la historia principal.",
-    tags: ["Krita", "Narrative Podcast", "Cadence Universe"],
-    links: [{ label: "Episodios" }, { label: "Spotify" }, { label: "Trailer" }, { label: "Lore" }],
+      "Cortometraje de animación 3D renderizada de cine negro, ambientado en la Colombia de los años 70. Un detective cínico investiga el asesinato de un líder popular y se enfrenta a un pasado que creía enterrado.",
+    tags: ["Animación 3D", "Cine negro", "Cadence Universe"],
+    links: [{ label: "Guion" }, { label: "Personajes" }, { label: "Escenarios" }],
     cover: "/proyectos/Textura_Papel.jpg",
+    href: "/proyectos/cadence-animado",
   },
 ];

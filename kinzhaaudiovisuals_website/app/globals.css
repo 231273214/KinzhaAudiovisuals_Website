@@ -9,10 +9,13 @@
   --color-surface: #272424;
   --color-ink: #e8e6e6;
   --color-muted: #a89c9c;
+  --color-dossier: #d8d8d5;
+  --color-dossier-gray: #686868;
 
   --font-sans: var(--font-space), sans-serif;
   --font-display: var(--font-barlow), sans-serif;
   --font-title: var(--font-inter), sans-serif;
+  --font-brand: var(--font-chaddlewood), var(--font-inter), sans-serif;
 
   --color-paper: #e6e6e6;
   --font-typewriter: var(--font-special-elite), "Courier New", monospace;
@@ -67,7 +70,7 @@
   hyphens: auto;
 }
 
-/* Artbook: tamaños que escalan con el ancho de cada página */
+/* Artbook */
 @utility bk-h1 {
   font-size: calc(11cqw * var(--ts, 1));
   line-height: 0.95;

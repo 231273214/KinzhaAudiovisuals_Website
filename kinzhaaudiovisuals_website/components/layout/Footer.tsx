@@ -6,7 +6,7 @@ export default function Footer() {
   return (
     <footer className="w-full">
       <Container className="flex flex-wrap items-center justify-between gap-6 py-8">
-        <p className="border-white/25 font-display text-[clamp(1.4rem,3vw,2rem)] font-bold text-white md:border-r md:pr-6">
+        <p className="border-white/25 font-brand text-[clamp(1.4rem,3vw,2rem)] text-white md:border-r md:pr-6">
           KINZHA AUDIOVISUALS
         </p>
 

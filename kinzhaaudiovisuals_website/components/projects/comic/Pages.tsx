@@ -1,6 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import Art from "@/components/projects/comic/Art";
 import Palette from "@/components/projects/comic/Palette";
+import { useInView } from "@/hooks/useInView";
 import type { ComicPage } from "@/lib/data/comic";
 
 type Of<T extends ComicPage["type"]> = Extract<ComicPage, { type: T }>;
@@ -134,6 +137,8 @@ export function GalleryPage({ page }: { page: Of<"gallery"> }) {
 }
 
 export function OutlinePage({ page }: { page: Of<"outline"> }) {
+  const [ref, inView] = useInView<HTMLDivElement>();
+
   const nodes = page.chapters.map((title, i) => ({
     title,
     x: i % 2 === 0 ? 70 : 150,
@@ -150,7 +155,7 @@ export function OutlinePage({ page }: { page: Of<"outline"> }) {
     .join(" ");
 
   return (
-    <div className={PAGE}>
+    <div ref={ref} data-active={inView} className={`group/outline ${PAGE}`}>
       <svg
         viewBox="0 0 400 420"
         role="img"
@@ -164,13 +169,13 @@ export function OutlinePage({ page }: { page: Of<"outline"> }) {
           stroke="#c8323a"
           strokeWidth={1.6}
           strokeLinecap="round"
-          className="[stroke-dasharray:1] [stroke-dashoffset:1] transition-[stroke-dashoffset] delay-500 duration-[2600ms] ease-in-out group-data-[active=true]/page:[stroke-dashoffset:0]"
+          className="[stroke-dasharray:1] [stroke-dashoffset:1] transition-[stroke-dashoffset] delay-500 duration-[2600ms] ease-in-out group-data-[active=true]/outline:[stroke-dashoffset:0]"
         />
 
         {nodes.map((n, i) => (
           <g
             key={n.title}
-            className="group/node cursor-default opacity-0 transition-opacity duration-500 group-data-[active=true]/page:opacity-100"
+            className="group/node cursor-default opacity-0 transition-opacity duration-500 group-data-[active=true]/outline:opacity-100"
             style={{ transitionDelay: `${700 + i * 280}ms` }}
           >
             <title>{`Entrega ${i + 1}`}</title>

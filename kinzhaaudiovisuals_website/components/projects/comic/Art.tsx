@@ -16,8 +16,12 @@ export default function Art({ src, alt, className = "", fit = "contain" }: Props
   return (
     <div className={`relative ${className}`}>
       {failed ? (
-        <div className="absolute inset-0 grid place-items-center border border-dashed border-current/30 p-2 text-center text-[1.6cqw] text-current/50">
-          {alt}
+        <div className="absolute inset-0 grid place-items-center border border-dashed border-current/30 p-2 text-center text-[1.5cqw] leading-snug text-current/50">
+          <span>
+            {alt}
+            <br />
+            {src.split("/").pop()}
+          </span>
         </div>
       ) : (
         <Image

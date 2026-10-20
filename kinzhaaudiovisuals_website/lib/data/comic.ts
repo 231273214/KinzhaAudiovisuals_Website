@@ -1,4 +1,7 @@
-const img = (name: string) => `/images/proyectos/comic/${name}`;
+const EXT = "png";
+
+const img = (name: string) =>
+  `/images/proyectos/comic/${/\.\w+$/.test(name) ? name : `${name}.${EXT}`}`;
 const art = (name: string, alt: string) => ({ src: img(name), alt });
 
 export type ComicPage =
@@ -34,22 +37,23 @@ const SYNOPSIS_1 =
 const SYNOPSIS_2 =
   "La confrontación en la finca de Zipaquirá destapa el motivo real del crimen —una promesa rota de reconocimiento— y exonera póstumamente a Mondragón. El cierre conecta el caso con la propia herida no resuelta de Sarmiento: un hermano que también desapareció sin explicación.";
 
-// Hoja de modelo (frente, perfil, espalda, boceto, construcción)
+// HOJA DE MODELO 
 const modelSheet = (id: "rafael" | "sarmiento", name: string): ComicPage => ({
   type: "gallery",
   title: "Hoja de modelo",
   columns: 3,
   items: [
-    { ...art(`${id}-frente.png`, `${name}, vista frontal`), caption: "Frente" },
-    { ...art(`${id}-perfil.png`, `${name}, perfil`), caption: "Perfil" },
-    { ...art(`${id}-espalda.png`, `${name}, de espalda`), caption: "Espalda" },
-    { ...art(`${id}-boceto.png`, `Boceto de ${name}`), caption: "Boceto" },
-    { ...art(`${id}-construccion.png`, `Construcción de ${name}`), caption: "Construcción" },
+    { ...art(`${id}-frente`, `${name}, vista frontal`), caption: "Frente" },
+    { ...art(`${id}-perfil`, `${name}, perfil`), caption: "Perfil" },
+    { ...art(`${id}-espalda`, `${name}, de espalda`), caption: "Espalda" },
+    { ...art(`${id}-boceto`, `Boceto de ${name}`), caption: "Boceto" },
+    { ...art(`${id}-construccion`, `Construcción de ${name}`), caption: "Construcción" },
   ],
 });
 
+// STORYBOARD 
 const sb = (n: number) => ({
-  ...art(`storyboard-${String(n).padStart(2, "0")}.png`, `Storyboard, hoja ${n}`),
+  ...art(`storyboard-${String(n).padStart(2, "0")}`, `Storyboard, hoja ${n}`),
   caption: `Hoja ${n}`,
 });
 
@@ -58,7 +62,7 @@ export const COMIC_COVER: ComicPage = {
   kicker: "Artbook",
   title: "Wire Tap",
   subtitle: "Ecos de la memoria",
-  image: img("sarmiento-hero.png"),
+  image: img("sarmiento-hero"),
 };
 
 export const COMIC_CLOSING: ComicPage = {
@@ -68,7 +72,7 @@ export const COMIC_CLOSING: ComicPage = {
 };
 
 export const COMIC_SPREADS: ComicSpread[] = [
-  // 1 · Resumen
+  // 1  Resumen
   {
     section: "Resumen",
     left: {
@@ -76,7 +80,7 @@ export const COMIC_SPREADS: ComicSpread[] = [
       title: "Wire Tap",
       subtitle: "Ecos de la memoria",
       text: `${SYNOPSIS_1} ${SYNOPSIS_2}`,
-      image: img("sarmiento-hero.png"),
+      image: img("sarmiento-hero"),
       chip: "Estilo gráfico · infantil / retro",
     },
     right: {
@@ -102,24 +106,24 @@ export const COMIC_SPREADS: ComicSpread[] = [
     },
   },
 
-  // 2 · Estilo gráfico
+  // 2  Estilo gráfico
   {
     section: "Estilo",
     left: {
       type: "gallery",
       title: "Estilo gráfico",
       banner: "Rubber hose",
-      items: [{ ...art("estilo-anatomia.png", "Estudio de anatomía del estilo"), label: "Anatomía" }],
+      items: [{ ...art("estilo-anatomia", "Estudio de anatomía del estilo"), label: "Anatomía" }],
     },
     right: {
       type: "gallery",
-      items: [{ ...art("estilo-expresion.png", "Estudio de expresiones"), label: "Expresión" }],
+      items: [{ ...art("estilo-expresion", "Estudio de expresiones"), label: "Expresión" }],
       paletteLabel: "Color y sombras",
       palette: ["0A0A0A", "333333", "CCCCCC", "FFFFFF"],
     },
   },
 
-  // 3 · Sinopsis
+  // 3  Sinopsis
   {
     section: "Sinopsis",
     left: {
@@ -127,16 +131,16 @@ export const COMIC_SPREADS: ComicSpread[] = [
       title: "Sinopsis",
       label: "Eventos de Wire Tap «Ecos de la memoria»",
       paragraphs: [SYNOPSIS_1],
-      image: art("rafael-hero.png", "Rafael Urrutia"),
+      image: art("rafael-hero", "Rafael Urrutia"),
     },
     right: {
       type: "text",
       paragraphs: [SYNOPSIS_2],
-      image: art("rafael-boceto.png", "Boceto de anatomía"),
+      image: art("rafael-boceto", "Boceto de anatomía"),
     },
   },
 
-  // 4 · Outline
+  // 4  Outline
   {
     section: "Outline",
     left: {
@@ -146,7 +150,7 @@ export const COMIC_SPREADS: ComicSpread[] = [
       paragraphs: [
         "Se dividirá en 8 entregas, cada una correspondiente a un capítulo de la historia. Cada capítulo/entrega contará con 8 páginas (4 hojas de contenido) más portada y contraportada.",
       ],
-      image: art("sarmiento-construccion.png", "Construcción del detective"),
+      image: art("outline", "Construcción del detective"),
     },
     right: {
       type: "outline",
@@ -164,14 +168,14 @@ export const COMIC_SPREADS: ComicSpread[] = [
     },
   },
 
-  // 5 · Arco narrativo
+  // 5  Arco narrativo
   {
     section: "Arco",
     left: {
       type: "text",
       title: "Arco narrativo",
       paragraphs: [],
-      image: art("sarmiento-hero.png", "Eduardo Sarmiento"),
+      image: art("sarmiento-hero", "Eduardo Sarmiento"),
     },
     right: {
       type: "arc",
@@ -196,7 +200,7 @@ export const COMIC_SPREADS: ComicSpread[] = [
     },
   },
 
-  // 6 · Rafael Urrutia (ficha)
+  // 6  Rafael Urrutia 
   {
     section: "Rafael",
     left: {
@@ -207,12 +211,12 @@ export const COMIC_SPREADS: ComicSpread[] = [
         "Candidato presidencial y víctima del magnicidio de octubre de 1974. Su asesinato es el detonante de la historia.",
       ],
       palette: ["FFFFFF", "4E4E4E", "090909", "000000"],
-      image: art("rafael-hero.png", "Rafael Urrutia"),
+      image: art("rafael-hero", "Rafael Urrutia"),
     },
     right: modelSheet("rafael", "Rafael Urrutia"),
   },
 
-  // 7 · Rafael Urrutia (transfondo)
+  // 7  Rafael Urrutia 
   {
     left: {
       type: "text",
@@ -222,7 +226,7 @@ export const COMIC_SPREADS: ComicSpread[] = [
       paragraphs: [
         "Rafael Urrutia fue un político ambicioso que construyó su imagen pública sobre discursos de progreso, educación y apoyo a la cultura. Como parte de su estrategia electoral para ganar respaldo y reputación, financió la creación de un conservatorio de música donde estudiaban los jóvenes talentos más prometedores de la ciudad, entre ellos el saxofonista Esteban Salcedo.",
       ],
-      image: art("rafael-hero.png", "Rafael Urrutia"),
+      image: art("rafael-hero", "Rafael Urrutia"),
     },
     right: {
       type: "text",
@@ -230,11 +234,11 @@ export const COMIC_SPREADS: ComicSpread[] = [
       paragraphs: [
         "Sin embargo, para Urrutia las promesas culturales no eran convicciones, sino herramientas políticas desechables. Cuando el proyecto dejó de serle útil o el dinero desapareció, retiró el financiamiento sin dar explicaciones y dejó cerrar la institución, continuando su carrera política como si nada hubiera pasado. Esta decisión destruyó el futuro de los estudiantes y sembró la venganza que culminó con su muerte en su propio apartamento, de un disparo limpio y certero sin señales de ingreso forzado.",
       ],
-      image: art("rafael-construccion.png", "Construcción de Rafael Urrutia"),
+      image: art("rafael-construccion", "Construcción de Rafael Urrutia"),
     },
   },
 
-  // 8 · Eduardo Sarmiento (ficha)
+  // 8  Eduardo Sarmiento 
   {
     section: "Sarmiento",
     left: {
@@ -243,12 +247,12 @@ export const COMIC_SPREADS: ComicSpread[] = [
       label: "Concepto del personaje",
       paragraphs: ["Eduardo Sarmiento es un expolicía reconvertido en detective privado."],
       palette: ["FFFFFF", "2A2A2A", "090909", "000000"],
-      image: art("sarmiento-hero.png", "Eduardo Sarmiento"),
+      image: art("sarmiento-hero", "Eduardo Sarmiento"),
     },
     right: modelSheet("sarmiento", "Eduardo Sarmiento"),
   },
 
-  // 9 · Eduardo Sarmiento (concepto)
+  // 9  Eduardo Sarmiento 
   {
     left: {
       type: "text",
@@ -258,7 +262,7 @@ export const COMIC_SPREADS: ComicSpread[] = [
       paragraphs: [
         "Es un expolicía reconvertido en detective privado, caracterizado por su voz rasposa, su hábito de fumar cigarrillos y su profunda desconfianza hacia las versiones oficiales. Sarmiento acepta un encargo anónimo pagado en efectivo para investigar la muerte del candidato presidencial Rafael Urrutia en 1974, convirtiéndose en el único en prestar atención a la misteriosa melodía de saxofón que suena cada noche en la escena del crimen.",
       ],
-      image: art("sarmiento-hero.png", "Eduardo Sarmiento"),
+      image: art("sarmiento-hero", "Eduardo Sarmiento"),
     },
     right: {
       type: "text",
@@ -266,46 +270,47 @@ export const COMIC_SPREADS: ComicSpread[] = [
       paragraphs: [
         "Al visitar por primera vez el apartamento donde ocurrió el asesinato, Sarmiento nota una escena demasiado limpia y ordenada, concluyendo que alguien tuvo tiempo suficiente para borrar las huellas e impresiones importantes.",
       ],
-      image: art("sarmiento-boceto.png", "Boceto de Eduardo Sarmiento"),
+      image: art("sarmiento-boceto", "Boceto de Eduardo Sarmiento"),
     },
   },
 
-  // 10 · Escenarios I
+  // 10  Escenarios I
   {
     section: "Escenarios",
     left: {
       type: "gallery",
       title: "Escenarios",
       items: [
-        { ...art("escenario-planta.png", "Planta de la oficina"), caption: "Planta" },
-        { ...art("escenario-oficina.png", "Vista de la oficina"), caption: "Oficina" },
+        { ...art("escenario-planta", "Planta de la oficina"), caption: "Planta" },
+        { ...art("escenario-oficina", "Vista de la oficina"), caption: "Oficina" },
       ],
     },
     right: {
       type: "gallery",
       items: [
         {
-          ...art("escenario-fiscalia.png", "Fiscalía Central"),
+          ...art("escenario-fiscalia", "Fiscalía Central"),
           caption: "Fiscalía Central · martes, 12:00 PM",
         },
       ],
     },
   },
 
-  // 11 · Escenarios II
+  // 11  Escenarios II
   {
     left: {
       type: "gallery",
       title: "Escenarios",
-      items: [{ ...art("escenario-bar-fachada.png", "Fachada del bar de jazz"), caption: "Fachada del bar «Jazz»" }],
+      items: [
+        { ...art("escenario-bar-fachada", "Fachada del bar de jazz"), caption: "Fachada del bar «Jazz»" },
+      ],
     },
     right: {
       type: "gallery",
-      items: [{ ...art("escenario-bar-interior.png", "Interior del bar"), caption: "La barra y el piano" }],
+      items: [{ ...art("escenario-bar-interior", "Interior del bar"), caption: "La barra y el piano" }],
     },
   },
 
-  // 12–15 · Storyboard
   {
     section: "Storyboard",
     left: { type: "gallery", title: "Storyboard", columns: 2, items: [sb(1), sb(2)] },

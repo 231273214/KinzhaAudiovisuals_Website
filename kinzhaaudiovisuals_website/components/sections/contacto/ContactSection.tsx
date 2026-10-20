@@ -10,7 +10,7 @@ export default function ContactSection() {
         </h1>
 
         <div className="mt-20 grid items-center gap-14 md:mt-32 md:grid-cols-2">
-          <p className="font-title text-[clamp(2.75rem,6.9vw,7rem)] font-light leading-[1.2]">
+          <p className="font-brand text-[clamp(2.75rem,6.9vw,7rem)] leading-[1.2]">
             Kinzha
             <br />
             audiovisuals
