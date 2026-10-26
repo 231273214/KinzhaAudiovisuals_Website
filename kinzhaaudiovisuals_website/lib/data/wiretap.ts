@@ -11,8 +11,13 @@ export const WIRETAP = {
     building: `${IMG}/edificio.jpg`,
     chroniclers: `${IMG}/cronistas.jpg`,
     saxophonist: `${IMG}/saxofonista.jpg`,
-    bulb: `${IMG}/bombillo.jpg`,
+    bulb: `${IMG}/Bombillo.png`,
     compass: `${IMG}/brujula.png`,
+  },
+
+  podcast: {
+    audio: "/images/proyectos/wiretap/WireTap_Cap_1_2.mp3",
+    title: "Capítulo 1",
   },
 
   writers: [

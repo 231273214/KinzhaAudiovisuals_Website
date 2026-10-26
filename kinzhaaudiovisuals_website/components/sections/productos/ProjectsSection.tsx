@@ -14,7 +14,7 @@ export default function ProjectsSection() {
 
       <section>
         <Container className="pb-24">
-          <ul className="mx-auto flex max-w-[960px] flex-wrap justify-center gap-x-10 gap-y-12">
+          <ul className="mx-auto grid max-w-[880px] grid-cols-1 justify-items-center gap-x-16 gap-y-14 sm:grid-cols-2">
             {PROJECTS.map((project) => (
               <ProjectCard key={project.id} project={project} />
             ))}

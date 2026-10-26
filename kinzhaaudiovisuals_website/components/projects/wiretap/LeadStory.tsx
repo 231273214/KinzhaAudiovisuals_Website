@@ -31,6 +31,7 @@ export default function LeadStory() {
           caption="El edificio de apartamentos de Rafael Urrutia en el centro de Bogotá."
           aspect="aspect-[327/182]"
           sizes="(min-width: 768px) 330px, 100vw"
+          priority
         />
       </div>
     </article>

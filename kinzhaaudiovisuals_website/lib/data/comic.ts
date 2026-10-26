@@ -321,11 +321,7 @@ export const COMIC_SPREADS: ComicSpread[] = [
     right: { type: "gallery", items: [sb(6)] },
   },
   {
-    left: { type: "gallery", title: "Storyboard", columns: 2, items: [sb(7), sb(8)] },
-    right: { type: "gallery", items: [sb(9)] },
-  },
-  {
-    left: { type: "gallery", title: "Storyboard", items: [sb(10)] },
-    right: { type: "gallery", items: [sb(11)] },
+    left: { type: "gallery", title: "Storyboard", items: [sb(7)] },
+    right: { type: "gallery", items: [sb(8)] },
   },
 ];

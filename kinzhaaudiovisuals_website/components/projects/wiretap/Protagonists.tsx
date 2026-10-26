@@ -11,11 +11,14 @@ export default function Protagonists() {
         aspect="aspect-[147/155]"
         sizes="170px"
         className="md:pt-3"
+        tilt
       />
 
       <div className="border-t-2 border-black pt-3">
         <h2 className="text-center text-[15px] font-bold uppercase italic">
-          Los protagonistas de una tragedia en clave de sol
+          <span className="marker-underline">
+            Los protagonistas de una tragedia en clave de sol
+          </span>
         </h2>
         <div className="news-text mt-3 space-y-4">
           {WIRETAP.characters.map((c) => (

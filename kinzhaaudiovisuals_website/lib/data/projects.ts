@@ -1,12 +1,12 @@
 export type Project = {
   id: string;
   number: number;
-  title: string;      
-  kind: string;       
-  heading: string;    
+  title: string;
+  kind: string;
+  heading: string;
   description: string;
   tags: string[];
-  links: { label: string; href?: string }[]; 
+  links: { label: string; href?: string }[];
   cover?: string;
   href?: string;
 };
@@ -23,6 +23,7 @@ export const PROJECTS: Project[] = [
     tags: ["Unreal", "Narrative Game", "3D Art", "Sound Design"],
     links: [{ label: "Trailer" }, { label: "Demo" }],
     cover: "/proyectos/Textura_Papel.jpg",
+    href: "/proyectos/cadence-of-shadows",
   },
   {
     id: "wiretap",
@@ -33,10 +34,10 @@ export const PROJECTS: Project[] = [
     description:
       "Serie en formato podcast que funciona como la precuela oficial de Cadence. A través de registros de audio e interceptaciones, expande el universo narrativo revelando los eventos previos a la historia principal.",
     tags: ["Premiere", "Audio Experience", "Sound Design", "Narrative Podcast", "Cadence Universe"],
-    links: [{ label: "Episodios" }, { label: "Spotify" }, { label: "Trailer" }, { label: "Lore" }],
+    links: [{ label: "Episodios" }, { label: "Trailer" }, { label: "Lore" }],
     cover: "/proyectos/Textura_Papel.jpg",
     href: "/proyectos/wiretap",
-},
+  },
   {
     id: "historia-cadence",
     number: 3,
@@ -59,7 +60,7 @@ export const PROJECTS: Project[] = [
     description:
       "Cortometraje de animación 3D renderizada de cine negro, ambientado en la Colombia de los años 70. Un detective cínico investiga el asesinato de un líder popular y se enfrenta a un pasado que creía enterrado.",
     tags: ["Animación 3D", "Cine negro", "Cadence Universe"],
-    links: [{ label: "Guion" }, { label: "Personajes" }, { label: "Escenarios" }],
+    links: [{ label: "Blender" }, { label: "Krita" }, { label: "Lore" }],
     cover: "/proyectos/Textura_Papel.jpg",
     href: "/proyectos/cadence-animado",
   },
