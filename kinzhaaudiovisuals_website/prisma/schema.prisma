@@ -1,0 +1,84 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum OrderStatus {
+  PENDING
+  CONFIRMED
+  PROCESSING
+  SHIPPED
+  DELIVERED
+  CANCELLED
+}
+
+enum PaymentMethod {
+  PSE
+  TRANSFERENCIA
+}
+
+// Stock por producto y talla. size = "" para productos sin talla.
+model StockItem {
+  productId String
+  size      String @default("")
+  quantity  Int
+
+  @@id([productId, size])
+  @@map("stock_items")
+}
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  emailVerified DateTime?
+  passwordHash  String?
+  fullName      String
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  orders        Order[]
+
+  @@map("users")
+}
+
+model Order {
+  id              String        @id @default(cuid())
+  orderNumber     String        @unique
+  status          OrderStatus   @default(CONFIRMED)
+  // true mientras no haya cobro real
+  isDemo          Boolean       @default(true)
+  paymentMethod   PaymentMethod
+  customerName    String
+  customerEmail   String
+  customerPhone   String
+  shippingAddress String
+  city            String
+  total           Int
+  userId          String?
+  user            User?         @relation(fields: [userId], references: [id])
+  items           OrderItem[]
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  @@index([customerEmail])
+  @@index([userId])
+  @@map("orders")
+}
+
+model OrderItem {
+  id        String @id @default(cuid())
+  orderId   String
+  order     Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productId String
+  // Copia de lo que valía al comprar
+  name      String
+  size      String @default("")
+  quantity  Int
+  unitPrice Int
+
+  @@index([orderId])
+  @@map("order_items")
+}

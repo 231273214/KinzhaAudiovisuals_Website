@@ -1,8 +1,9 @@
 "use client";
 
 import { House, Mail, Smartphone } from "lucide-react";
+import Link from "next/link";
 import type { FormEvent } from "react";
-import { useCart } from "@/hooks/useCart";
+import { usePlaceOrder } from "@/hooks/usePlaceOrder";
 import { banks, clientTypes, documentTypes } from "@/lib/data/checkout";
 import OrderSummary from "./OrderSummary";
 import PayButton from "./PayButton";
@@ -10,13 +11,26 @@ import SelectField from "./SelectField";
 import TextField from "./TextField";
 
 export default function BankTransferForm() {
-  const { ready, count } = useCart();
-  const empty = !ready || count === 0;
+  const { ready, shipping, canPay, loading, error, placeOrder } = usePlaceOrder();
+
+  if (!ready) return <div className="min-h-[300px]" />;
+
+  if (!shipping) {
+    return (
+      <p className="text-lg">
+        Primero completa tus datos de envío.{" "}
+        <Link href="/envio" className="underline underline-offset-2">
+          Ir a datos de envío
+        </Link>
+      </p>
+    );
+  }
+
+  const [firstName, ...rest] = shipping.name.split(" ");
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (empty) return;
-    // TODO backend: validar los datos y crear la transferencia
+    void placeOrder("TRANSFERENCIA");
   }
 
   return (
@@ -28,8 +42,8 @@ export default function BankTransferForm() {
         <h1 className="text-2xl font-semibold">Transferencias Bancarias</h1>
 
         <div className="mt-3 space-y-5 px-4 pb-4 sm:px-6">
-          <TextField label="Nombres" name="nombres" autoComplete="given-name" required />
-          <TextField label="Apellidos" name="apellidos" autoComplete="family-name" required />
+          <TextField label="Nombres" name="nombres" readOnly defaultValue={firstName} />
+          <TextField label="Apellidos" name="apellidos" readOnly defaultValue={rest.join(" ")} />
           <SelectField
             label="Tipo de cliente"
             placeholder="Tipo de cliente"
@@ -58,24 +72,24 @@ export default function BankTransferForm() {
             label="Móvil"
             name="movil"
             type="tel"
-            autoComplete="tel"
             icon={Smartphone}
-            required
+            readOnly
+            defaultValue={shipping.phone}
           />
           <TextField
             label="Correo electrónico"
             name="correo"
             type="email"
-            autoComplete="email"
             icon={Mail}
-            required
+            readOnly
+            defaultValue={shipping.email}
           />
           <TextField
             label="Dirección"
             name="direccion"
-            autoComplete="street-address"
             icon={House}
-            required
+            readOnly
+            defaultValue={`${shipping.address}, ${shipping.city}`}
           />
           <SelectField
             label="Lista de bancos"
@@ -84,12 +98,23 @@ export default function BankTransferForm() {
             options={banks}
             required
           />
+
+          <Link href="/envio" className="inline-block text-sm underline underline-offset-2">
+            Cambiar datos de envío
+          </Link>
         </div>
       </div>
 
       <div className="flex flex-col gap-8 lg:w-[430px] lg:self-end lg:justify-self-end">
         <OrderSummary methodLabel="Transferencia bancaria" />
-        <PayButton disabled={empty} />
+        {error && (
+          <p role="alert" className="text-sm font-medium text-[#7a0a0a]">
+            {error}
+          </p>
+        )}
+        <PayButton disabled={!canPay || loading}>
+          {loading ? "Processing…" : "Pay Now"}
+        </PayButton>
       </div>
     </form>
   );

@@ -95,12 +95,11 @@ export default function CartView() {
           </div>
         </dl>
 
-        {/* Sin backend todavía no se puede cobrar */}
         <Link
-          href="/pago"
-          className="mt-5 block w-full rounded-full bg-action py-2 text-center text-sm text-white transition hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-        >
-          Ir a pagar
+        href="/envio"
+        className="mt-5 block w-full rounded-full bg-action py-2 text-center text-sm text-white transition hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+      >
+        Ir a pagar
         </Link>
         <button type="button" onClick={clear} className="mt-3 text-xs underline">
           Vaciar carrito

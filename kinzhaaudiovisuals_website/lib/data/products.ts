@@ -95,3 +95,9 @@ export function getProductsByCategory(category: CategoryId) {
 export function getProductById(id: string) {
   return PRODUCTS.find((p) => p.id === id);
 }
+
+const CATEGORIES_WITH_SIZES: CategoryId[] = ["camisas", "buzos", "pantalones"];
+
+export function getProductSizes(product: Product): string[] {
+  return product.sizes ?? (CATEGORIES_WITH_SIZES.includes(product.category) ? SIZES_ROPA : []);
+}
