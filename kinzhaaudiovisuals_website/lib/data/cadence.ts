@@ -36,9 +36,9 @@ export const productPage: TextPage = {
     },
   ],
   figures: [
-    `${CADENCE_IMG}/iconos/detective.png`,
-    `${CADENCE_IMG}/iconos/sombrero.png`,
-    `${CADENCE_IMG}/iconos/cenicero.png`,
+    `${CADENCE_IMG}/img_1.png`,
+    `${CADENCE_IMG}/img_2.png`,
+    `${CADENCE_IMG}/img_3.png`,
   ],
 };
 
@@ -134,13 +134,16 @@ export type Character = {
   motivation: string;
   photo: string;
   sheet: string;
-  fingerprints?: string;
+  fingerprints?: string[];
   stamp?: string;
   placard?: string[];
   signature?: string;
 };
 
-const P = `${CADENCE_IMG}/personajes`;
+const d = `${CADENCE_IMG}/damian`;
+const c = `${CADENCE_IMG}/cabo`;
+const r = `${CADENCE_IMG}/ricaurte`;
+const g = `${CADENCE_IMG}/giovanni`;
 
 export const CHARACTERS: Character[] = [
   {
@@ -151,7 +154,14 @@ export const CHARACTERS: Character[] = [
     outfit: "Viste una gabardina desgastada y un sombrero fedora que rara vez se quita, incluso bajo techo.",
     description: "Cínico, observador y de pocas palabras, esconde el peso de casos que preferiría olvidar.",
     motivation: "Fonseca busca la verdad no por fe en la justicia institucional, sino por una necesidad personal de cerrar cuentas con un pasado que creía enterrado. El asesinato de Ezequiel Peña lo obliga a reabrir una herida que involucra a la antigua pandilla de la 121 — y, posiblemente, a él mismo.",
-    photo: `${P}/fonseca-foto.png`, sheet: `${P}/fonseca-modelo.png`, fingerprints: `${P}/fonseca-huellas.png`,
+    photo: `${d}/cara_damian.png`, 
+    sheet: `${d}/damian_concept_art.png`, 
+    fingerprints: [
+      `${d}/huella_1.png`, 
+      `${d}/huella_2.png`, 
+      `${d}/huella_3.png`, 
+      `${d}/huella_4.png`
+    ],
   },
   {
     id: "rosso",
@@ -161,7 +171,9 @@ export const CHARACTERS: Character[] = [
     outfit: "Viste un traje elegante, sombrero y casi siempre con un puro en la boca.",
     description: "Elegante, peligroso, de autoridad silenciosa: no necesita alzar la voz para que todos en el bar se detengan.",
     motivation: "El Italiano protege un pacto que creía sellado. Su reaparición sugiere que el verdadero peligro no es él directamente, sino lo que está dispuesto a hacer para que ciertos secretos — y ciertas alianzas con el poder — sigan enterrados.",
-    photo: `${P}/rosso-foto.png`, sheet: `${P}/rosso-modelo.png`, stamp: "Sin registro dactilar",
+    photo: `${g}/foto_giovanni.png`, 
+    sheet: `${g}/concept_art_giovanni.png`, 
+    stamp: "Sin registro dactilar", 
   },
   {
     id: "ricaurte",
@@ -171,8 +183,16 @@ export const CHARACTERS: Character[] = [
     outfit: "Viste una chaqueta de cuero y pantalones de tipo bota campana.",
     description: "Rudo y desconfiado. Bebe en una esquina del bar, alias «Tejón».",
     motivation: "Él quiere que el pasado siga muerto. Cualquier señal de que alguien está removiendo lo que pasó con la vieja pandilla es, para ellos, una amenaza directa a la poca estabilidad que les queda.",
-    photo: `${P}/ricaurte-foto.png`, sheet: `${P}/ricaurte-modelo.png`, fingerprints: `${P}/ricaurte-huellas.png`,
-    placard: ["Policía Nacional", "2387463", "22-08-1948"], signature: "ACAB",
+    photo: `${r}/foto_ricaurte.png`, 
+    sheet: `${r}/concept_art_ricaurte.png`, 
+    fingerprints: [
+      `${r}/huella_1.png`, 
+      `${r}/huella_2.png`, 
+      `${r}/huella_3.png`, 
+      `${r}/huella_4.png`
+    ], 
+    placard: [], 
+    signature: "ACAB",
   },
   {
     id: "rios",
@@ -182,17 +202,26 @@ export const CHARACTERS: Character[] = [
     outfit: "Viste un uniforme de policía de la época.",
     description: "Joven y nervioso. Es el primero en llegar a la escena del crimen; le cuesta sostenerle la mirada a Fonseca.",
     motivation: "Ríos quiere demostrar que merece estar ahí. Su lealtad al procedimiento choca con la manera en que Fonseca opera al margen de las reglas, y esa tensión lo obliga a decidir de qué lado quiere aprender.",
-    photo: `${P}/rios-foto.png`, sheet: `${P}/rios-modelo.png`, fingerprints: `${P}/rios-huellas.png`,
+    photo: `${c}/foto_cabo.png`, 
+    sheet: `${c}/concept_art_cabo.png`, 
+    fingerprints: [
+      `${r}/huella_1.png`, 
+      `${r}/huella_2.png`, 
+      `${r}/huella_3.png`, 
+      `${r}/huella_4.png`
+    ], 
   },
 ];
 
 /*  Mood board  */
-const M = `${CADENCE_IMG}/moodboard`;
-export const MOOD_CHARACTERS = Array.from({ length: 7 }, (_, i) => `${M}/personaje-${i + 1}.jpg`);
-export const MOOD_SCENES = Array.from({ length: 9 }, (_, i) => `${M}/escenario-${i + 1}.jpg`);
+const M = `${CADENCE_IMG}/mood_board`;
 
-/*  Escenarios  */
-const E = `${CADENCE_IMG}/escenarios`;
+export const MOOD_CHARACTERS = Array.from({ length: 6 }, (_, i) => `${M}/personajes/img_${i + 1}.png`);
+
+export const MOOD_SCENES = Array.from({ length: 8 }, (_, i) => `${M}/Escenarios/mood_${i + 1}.png`);
+
+/* Escenarios */
+const E = `${M}/Escenarios_2`;
 export type Scenario = {
   id: string;
   title: string;
@@ -204,16 +233,16 @@ export const SCENARIOS: Scenario[] = [
     id: "calle",
     title: "Fachada y calles",
     stages: [
-      { label: "Estudio de luz", src: `${E}/calle-boceto.jpg` },
-      { label: "Render final", src: `${E}/calle-render.jpg` },
+      { label: "Estudio de luz", src: `${E}/ilustracion_casa.png` },
+      { label: "Referencia", src: `${E}/ref_casa.png`},
     ],
   },
   {
     id: "bar",
     title: "Bar clandestino",
     stages: [
-      { label: "Boceto", src: `${E}/bar-boceto.jpg` },
-      { label: "Render final", src: `${E}/bar-render.jpg` },
+      { label: "Boceto", src: `${E}/ilustracion_bar.png` },
+      { label: "Referencia", src: `${E}/ref_bar.png` }, 
     ],
   },
 ];

@@ -64,7 +64,7 @@ export function CharacterFile({ character: c, active }: Props) {
           <div className="relative">
             <div className="rounded-[1.2cqw] bg-neutral-800 p-[1.4cqw]">
               <div className="relative aspect-[4/5] bg-neutral-300">
-                <Photo src={c.photo} alt={`Retrato de ${c.name}`} className="absolute inset-0" sizes="240px" />
+                <Photo src={c.photo} alt={`Retrato de ${c.name}`} className="h-full w-full" sizes="240px" />
                 {c.placard && (
                   <div className="absolute inset-x-[14%] bottom-[4%] bg-neutral-300 py-[0.8cqw] text-center text-[1.5cqw] uppercase leading-snug text-black/80">
                     {c.placard.map((l) => (
@@ -86,7 +86,7 @@ export function CharacterFile({ character: c, active }: Props) {
             ))}
           </div>
           {c.fingerprints && (
-            <Photo src={c.fingerprints} alt="Huellas dactilares" fit="contain" className="absolute inset-0" sizes="400px" />
+            <Photo src={c.fingerprints} alt="Huellas dactilares" fit="contain" className="h-full w-full" sizes="400px" />
           )}
           {c.stamp && (
             <div className="absolute inset-0 grid place-items-center">
