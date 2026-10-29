@@ -51,8 +51,7 @@ export default function OrderConfirmation() {
         </dl>
 
         <p className="mt-5 text-xs">
-          Te enviaremos el resumen a tu correo. Si no lo ves en unos minutos, revisa la
-          carpeta de spam. Entorno de demostración: no se realizó ningún cobro.
+          Hemos registrado tu pedido correctamente. Entorno de demostración: no se realizó ningún cobro.
         </p>
 
         <Link
