@@ -50,9 +50,7 @@ export default function Navbar() {
           </ul>
 
           <div className="flex items-center gap-5">
-            <CartIconLink>
-              <Image src="/Icons/carrito-de-compras.png" alt="Carrito" width={22} height={22} />
-            </CartIconLink>
+            <CartIconLink />
             <ScrollTopLink href="/" className="block" aria-label="Kinzha Inicio">
               <Image src="/images/logo_kinsha.png" alt="Kinzha" width={22} height={22} />
             </ScrollTopLink>

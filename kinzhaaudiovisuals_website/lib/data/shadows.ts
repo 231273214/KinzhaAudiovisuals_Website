@@ -1,18 +1,12 @@
 export const GAME = {
   title: "Cadence of Shadows",
-  // las rutas cuando este el arte. Mientras estén vacías.
-  // Ejemplo: "/images/proyectos/shadows/hero.jpg"
   heroImage: "",
-
   blurb:
     "Un título inmersivo que combina una narrativa de misterio con un cuidado diseño visual y sonoro, sumergiendo al jugador en una atmósfera llena de secretos.",
-
   synopsis:
     "Un thriller psicológico y de acción 2.5D ambientado en la Colombia de los años 70. Entre la bruma de Bogotá, la violencia de las calles y los acordes disonantes del jazz, cada pista recopilada es una nota en la partitura de un crimen no resuelto.",
-
   trailerUrl: "",
   wishlistUrl: "",
-
   facts: [
     { label: "Género", value: "Acción narrativa noir 2.5D" },
     { label: "Motor / plataforma", value: "Unreal Engine 5.3 / PC" },
@@ -137,17 +131,12 @@ export const evidence: EvidenceItem[] = [
 
 export type Clue3D = {
   id: string;
-  /** Código que se muestra, ej: "EVID-04" */
   code: string;
   title: string;
-  /** Ej: "Prueba física", "Testimonio", "Documental" */
   category: string;
   description: string;
-  /** Ruta al .glb en /public. Vacío = usa el placeholder */
   model: string;
-  /** Forma procedural mientras no hay modelo */
-  placeholder?: "metronome" | "reel";
-  /** Imagen para dispositivos sin WebGL (un render de tu modelo) */
+  placeholder?: "metronome" | "reel" | "libreta";
   poster?: string;
 };
 

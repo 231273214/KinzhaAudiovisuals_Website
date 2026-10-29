@@ -11,6 +11,7 @@ type Props = {
   tilt?: boolean;
   className?: string;
   mediaClassName?: string;
+  priority?: boolean; 
 };
 
 export default function NewsPhoto({
@@ -23,20 +24,27 @@ export default function NewsPhoto({
   tilt = false,
   className = "",
   mediaClassName = "",
+  priority = false, 
 }: Props) {
   const frame = `relative overflow-hidden bg-black/10 ${aspect} ${
     circle ? "rounded-full border-2 border-black" : "border border-black"
   } ${mediaClassName}`;
 
-  const image = <Image src={src} alt={alt} fill sizes={sizes} className="object-cover" />;
+  const image = (
+    <Image 
+      src={src} 
+      alt={alt} 
+      fill 
+      sizes={sizes} 
+      priority={priority} 
+      className="object-cover" 
+    />
+  );
 
   return (
     <figure className={className}>
-      {tilt ? (
-        <TiltFrame className={frame}>{image}</TiltFrame>
-      ) : (
-        <TiltFrame className={frame}>{image}</TiltFrame>
-      )}
+      <TiltFrame className={frame}>{image}</TiltFrame>
+      
       <figcaption className={`${circle ? "mt-3" : "mt-1"} text-xs italic leading-snug`}>
         <span className="font-bold">Leyenda:</span> {caption}
       </figcaption>

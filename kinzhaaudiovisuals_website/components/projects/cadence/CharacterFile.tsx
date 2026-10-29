@@ -79,17 +79,30 @@ export function CharacterFile({ character: c, active }: Props) {
         </div>
 
         <div className="mt-[2.5cqw] h-[2cqw] bg-neutral-700" />
-        <div className="relative h-[17cqw] border border-black/80">
-          <div className="absolute inset-0 grid grid-cols-5 divide-x divide-black/70" aria-hidden>
-            {Array.from({ length: 5 }, (_, i) => (
+        <div className="relative h-[17cqw] w-full border border-black/80">
+          <div className="absolute inset-0 grid grid-cols-4 divide-x divide-black/70" aria-hidden>
+            {Array.from({ length: 4 }, (_, i) => (
               <div key={i} />
             ))}
           </div>
-          {c.fingerprints && (
-            <Photo src={c.fingerprints} alt="Huellas dactilares" fit="contain" className="h-full w-full" sizes="400px" />
+          
+          {c.fingerprints && c.fingerprints.length > 0 && (
+            <div className="absolute inset-0 grid grid-cols-4">
+              {c.fingerprints.map((fp, index) => (
+                <Photo 
+                  key={index} 
+                  src={fp} 
+                  alt={`Huella dactilar ${index + 1}`} 
+                  fit="contain" 
+                  className="h-full w-full" 
+                  sizes="100px" 
+                />
+              ))}
+            </div>
           )}
+
           {c.stamp && (
-            <div className="absolute inset-0 grid place-items-center">
+            <div className="absolute inset-0 grid place-items-center bg-white/50 backdrop-blur-sm">
               <Stamp text={c.stamp} active={active} />
             </div>
           )}
