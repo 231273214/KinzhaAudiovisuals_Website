@@ -28,8 +28,13 @@ export const CATEGORIES: Category[] = [
 ];
 
 export const SIZES_ROPA = ["S", "M", "L", "XL"];
+const CATEGORIES_WITH_SIZES: CategoryId[] = ["camisas", "buzos", "pantalones"];
 
-export const PRODUCTS: Product[] = [
+export function getProductSizes(product: Product): string[] {
+  return product.sizes ?? (CATEGORIES_WITH_SIZES.includes(product.category) ? SIZES_ROPA : []);
+}
+
+const RAW_PRODUCTS: Product[] = [
   // ── CAMISAS ──
   { id: "camisa-blanca", category: "camisas", name: "Camisa blanca", price: 65000, image: "/productos/camisas/Camisa_1.png" },
   { id: "camisa-azul", category: "camisas", name: "Camisa azul", price: 68000, image: "/productos/camisas/Camisa_2.png" },
@@ -88,16 +93,15 @@ export const PRODUCTS: Product[] = [
 
 ];
 
+export const PRODUCTS: Product[] = RAW_PRODUCTS.map((product) => {
+  const sizes = getProductSizes(product);
+  return { ...product, sizes: sizes.length > 0 ? sizes : undefined };
+});
+
 export function getProductsByCategory(category: CategoryId) {
   return PRODUCTS.filter((p) => p.category === category);
 }
 
 export function getProductById(id: string) {
   return PRODUCTS.find((p) => p.id === id);
-}
-
-const CATEGORIES_WITH_SIZES: CategoryId[] = ["camisas", "buzos", "pantalones"];
-
-export function getProductSizes(product: Product): string[] {
-  return product.sizes ?? (CATEGORIES_WITH_SIZES.includes(product.category) ? SIZES_ROPA : []);
 }

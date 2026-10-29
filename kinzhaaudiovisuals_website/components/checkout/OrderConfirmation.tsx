@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import Container from "@/components/ui/Container";
 import { useCart } from "@/hooks/useCart";
 import { useLastOrder } from "@/hooks/useShipping";
+import { markLastOrderCleared } from "@/lib/checkout/store";
 import { formatCOP } from "@/lib/format";
 
 export default function OrderConfirmation() {
@@ -12,7 +13,10 @@ export default function OrderConfirmation() {
   const { clear } = useCart();
 
   useEffect(() => {
-    if (order) clear();
+    if (order && !order.cleared) {
+      clear();
+      markLastOrderCleared();
+    }
   }, [order, clear]);
 
   if (!ready) return <Container className="min-h-[40vh] py-16" />;
@@ -47,7 +51,8 @@ export default function OrderConfirmation() {
         </dl>
 
         <p className="mt-5 text-xs">
-          Guarda tu número de pedido. Entorno de demostración: no se realizó ningún cobro.
+          Te enviaremos el resumen a tu correo. Si no lo ves en unos minutos, revisa la
+          carpeta de spam. Entorno de demostración: no se realizó ningún cobro.
         </p>
 
         <Link

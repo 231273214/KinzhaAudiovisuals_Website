@@ -1,4 +1,5 @@
-import { NextResponse } from "next/server";
+import { after, NextResponse } from "next/server";
+import { sendOrderEmail } from "@/lib/email/send-order-email";
 import { createOrder } from "@/lib/orders/create-order";
 import { OrderError } from "@/lib/orders/errors";
 import { checkoutSchema } from "@/lib/orders/schema";
@@ -21,6 +22,8 @@ export async function POST(req: Request) {
 
   try {
     const order = await createOrder(parsed.data);
+    after(() => sendOrderEmail(order));
+
     return NextResponse.json(
       { orderNumber: order.orderNumber, total: order.total },
       { status: 201 },

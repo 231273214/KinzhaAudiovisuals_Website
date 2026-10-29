@@ -6,7 +6,12 @@ export type ShippingData = {
   city: string;
 };
 
-export type LastOrder = { orderNumber: string; total: number; email: string };
+export type LastOrder = {
+  orderNumber: string;
+  total: number;
+  email: string;
+  cleared?: boolean;
+};
 
 const SHIPPING_KEY = "kinzha-shipping-v1";
 const ORDER_KEY = "kinzha-last-order-v1";
@@ -80,5 +85,12 @@ export function saveShipping(data: ShippingData) {
 export function saveLastOrder(order: LastOrder) {
   lastOrder = order;
   write(ORDER_KEY, order);
+  emit();
+}
+
+export function markLastOrderCleared() {
+  if (!lastOrder || lastOrder.cleared) return;
+  lastOrder = { ...lastOrder, cleared: true };
+  write(ORDER_KEY, lastOrder);
   emit();
 }

@@ -68,7 +68,7 @@ export async function createOrder(input: CheckoutInput) {
 
   for (let attempt = 1; ; attempt++) {
     try {
-        return await db.$transaction(
+      return await db.$transaction(
         async (tx) => {
           for (const line of lines) {
             const { count } = await tx.stockItem.updateMany({
@@ -108,8 +108,18 @@ export async function createOrder(input: CheckoutInput) {
                 })),
               },
             },
-            select: { orderNumber: true, total: true },
-          });
+            select: {
+              orderNumber: true,
+              total: true,
+              customerName: true,
+              customerEmail: true,
+              shippingAddress: true,
+              city: true,
+              items: {
+                select: { name: true, size: true, quantity: true, unitPrice: true },
+              },
+            },
+          }); 
         },
         {
           maxWait: 10000,

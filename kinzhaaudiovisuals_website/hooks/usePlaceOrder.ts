@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useCart } from "@/hooks/useCart";
 import { useShipping } from "@/hooks/useShipping";
 import { saveLastOrder } from "@/lib/checkout/store";
@@ -17,6 +17,14 @@ export function usePlaceOrder() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  useEffect(() => {
+    return () => {
+      submitting.current = false;
+      setLoading(false);
+      setError(null);
+    };
+  }, []);
+
   const ready = cart.ready && shippingReady;
   const canPay = ready && Boolean(shipping) && cart.lines.length > 0;
 
@@ -30,6 +38,7 @@ export function usePlaceOrder() {
       const res = await fetch("/api/checkout/simulated", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        signal: AbortSignal.timeout(20000),
         body: JSON.stringify({
           paymentMethod,
           customer: shipping,
@@ -57,7 +66,7 @@ export function usePlaceOrder() {
       });
       router.push("/confirmacion");
     } catch {
-      setError("No hay conexión. Revisa tu internet e inténtalo de nuevo.");
+      setError("No pudimos conectar con el servidor. Inténtalo de nuevo.");
       submitting.current = false;
       setLoading(false);
     }
