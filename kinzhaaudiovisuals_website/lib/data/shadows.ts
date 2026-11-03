@@ -61,12 +61,12 @@ export type GalleryItem = {
 };
 
 export const gallery: GalleryItem[] = [
-  { id: "shot-01", src: "", alt: "Callejón nocturno bajo la lluvia", caption: "Callejón, Bogotá 1970" },
-  { id: "shot-02", src: "", alt: "Interior del bar de jazz", caption: "Bar Jazz Nocturno" },
-  { id: "shot-03", src: "", alt: "Escena del crimen con el metrónomo", caption: "Sitio del crimen" },
-  { id: "shot-04", src: "", alt: "Oficina del detective", caption: "Oficina del detective" },
-  { id: "shot-05", src: "", alt: "Arte conceptual del detective", caption: "Arte conceptual" },
-  { id: "shot-06", src: "", alt: "Arte conceptual del saxofonista", caption: "Arte conceptual" },
+  { id: "shot-01", src: "/images/proyectos/shadows/shot_2.png", alt: "Callejón nocturno bajo la lluvia", caption: "Callejón, Bogotá 1970" },
+  { id: "shot-02", src: "/images/proyectos/shadows/shot_1.png", alt: "Interior del bar de jazz", caption: "Bar Jazz Nocturno" },
+  { id: "shot-03", src: "/images/proyectos/shadows/shot_3.png", alt: "Escena del crimen con el metrónomo", caption: "Sitio del crimen" },
+  { id: "shot-04", src: "/images/proyectos/shadows/shot_4.png", alt: "Oficina del detective", caption: "Oficina del detective" },
+  { id: "shot-05", src: "/images/proyectos/shadows/shot_5.png", alt: "Arte conceptual del detective", caption: "Arte conceptual" },
+  { id: "shot-06", src: "/images/proyectos/shadows/shot_6.png", alt: "Arte conceptual del saxofonista", caption: "Arte conceptual" },
 ];
 
 export type EvidenceType = "physical" | "testimonial" | "documentary";

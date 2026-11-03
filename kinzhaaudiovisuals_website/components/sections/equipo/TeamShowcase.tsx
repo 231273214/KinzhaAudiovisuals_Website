@@ -17,7 +17,7 @@ export default function TeamShowcase() {
           className="mx-auto w-fit"
           style={{ "--card-w": "clamp(88px, 18vw, 240px)" } as React.CSSProperties}
         >
-          <ul className="flex items-start pb-[calc(var(--card-w)*0.5)]">
+          <ul className="flex items-start gap-0.1 pb-[calc(var(--card-w)*0.5)] md:gap-0.1">
             {TEAM.map((member, i) => (
               <TeamCard
                 key={member.id}

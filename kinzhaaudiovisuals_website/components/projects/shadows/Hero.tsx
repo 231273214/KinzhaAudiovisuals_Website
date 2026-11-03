@@ -52,8 +52,7 @@ export default function Hero() {
 
       {/* z-30: botones */}
       <div className="relative z-30 flex flex-wrap items-center justify-center gap-4">
-        <NeonButton label="Reproducir trailer" primary href={GAME.trailerUrl || undefined} />
-        <NeonButton label="Añadir a wishlist" href={GAME.wishlistUrl || undefined} />
+        <NeonButton href="https://github.com/XxCamilo14xX/Cadence-of-shadows" />
       </div>
     </section>
   );

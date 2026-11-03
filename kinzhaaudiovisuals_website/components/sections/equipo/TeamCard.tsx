@@ -14,7 +14,6 @@ export default function TeamCard({ member, index, selected, onSelect }: Props) {
   return (
     <li
       style={{
-        marginLeft: index === 0 ? 0 : "calc(var(--card-w) * var(--slant) * -1)",
         marginTop: isLower ? "calc(var(--card-w) * 0.25)" : 0,
       }}
       className={`relative w-(--card-w) shrink-0 ${selected ? "z-20" : "z-0"}`}
