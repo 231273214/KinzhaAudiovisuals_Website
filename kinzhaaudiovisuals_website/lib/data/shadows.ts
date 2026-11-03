@@ -118,14 +118,13 @@ export const evidence: EvidenceItem[] = [
   },
   {
     id: "EVID-04",
-    title: "Metrónomo activo",
+    title: "Libreta de anotaciones",
     location: "Ático",
     type: "physical",
     description: "Metrónomo en marcha a 60 BPM en el ático de la casa.",
     coordinates: { x: 76, y: 52 },
     connectedTo: ["EVID-03", "EVID-01"],
-    image: "",
-    animation: "metronome",
+    image: "/images/proyectos/shadows/hojas_libreta.png",
   },
 ];
 

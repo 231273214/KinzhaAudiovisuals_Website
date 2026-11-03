@@ -42,7 +42,7 @@ export const SERVICES: Service[] = [
   {
     id: "programación",
     title: "Programación",
-    image: "/images/servicios/Programación.webp",
+    image: "/images/servicios/programación.webp",
     whatIs: "Desarrollo de software y soluciones digitales enfocadas en construir plataformas intuitivas, rápidas y escalables.",
     whatWeCreate: "Páginas web corporativas, tiendas virtuales (e-commerce), aplicaciones móviles (iOS y Android) y sistemas web a la medida.",
   },

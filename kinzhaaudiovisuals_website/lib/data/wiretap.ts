@@ -11,7 +11,7 @@ export const WIRETAP = {
     building: `${IMG}/edificio.jpg`,
     chroniclers: `${IMG}/cronistas.jpg`,
     saxophonist: `${IMG}/saxofonista.jpg`,
-    bulb: `${IMG}/Bombillo.png`,
+    bulb: `${IMG}/bombillo.png`,
     compass: `${IMG}/brujula.png`,
   },
 
