@@ -5,7 +5,7 @@ export default function Masthead() {
   return (
     <header>
       <Link
-        href="/productos"
+        href="/#proyectos"
         aria-label="Cerrar expediente y volver a Productos"
         className="inline-block -rotate-3 border-[3px] border-double border-black px-3 py-1 font-typewriter text-xs uppercase tracking-[0.2em] transition-transform duration-200 hover:rotate-0 hover:scale-95 active:scale-90"
       >

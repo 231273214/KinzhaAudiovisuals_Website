@@ -4,7 +4,7 @@ import { NAV_LINKS, SOCIAL_LINKS } from "@/lib/navigation";
 
 export default function Footer() {
   return (
-    <footer className="w-full">
+    <footer className="w-full bg-gradient-to-b from-transparent to-[#b00000] pt-32 md:pt-44">
       <Container className="flex flex-col items-center justify-between gap-8 py-10 md:flex-row md:items-start md:gap-6">
         
         <div className="flex w-full justify-center md:w-auto md:justify-start">

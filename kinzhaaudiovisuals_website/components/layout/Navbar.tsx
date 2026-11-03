@@ -26,14 +26,13 @@ export default function Navbar() {
           <button
             type="button"
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden flex items-center justify-center p-1 text-white hover:text-brand-soft transition-colors"
+            className="md:hidden flex items-center justify-center text-white hover:text-brand-soft transition-colors"
             aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
             aria-expanded={isOpen}
           >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
+            {isOpen ? <X size={22} /> : <Menu size={22} />} 
           </button>
 
-          {/* Enlaces Desktop */}
           <ul className="hidden md:flex items-center gap-8">
             {NAV_LINKS.map(({ href, label }) => (
               <li key={href}>

@@ -14,7 +14,7 @@ export default function ComicPage() {
     >
       <header className="flex items-center justify-between px-4 py-4 md:px-8">
         <Link
-          href="/productos"
+          href="/#proyectos"
           className="rounded-full border border-white/30 px-4 py-1 font-comic text-lg tracking-widest transition-colors hover:border-white hover:bg-white hover:text-black"
         >
           Cerrar libro

@@ -1,5 +1,5 @@
 import "server-only";
-import { Resend } from "resend";
+import nodemailer from "nodemailer";
 import { formatCOP } from "@/lib/format";
 
 export type OrderEmailData = {
@@ -25,11 +25,17 @@ const itemLabel = (item: OrderEmailData["items"][number]) =>
   `${item.name}${item.size ? ` (Talla ${item.size})` : ""} × ${item.quantity}`;
 
 export async function sendOrderEmail(order: OrderEmailData) {
-  const apiKey = process.env.RESEND_API_KEY;
-  if (!apiKey) {
-    console.warn("[EMAIL] Falta RESEND_API_KEY: no se envió el correo.");
+  const user = process.env.EMAIL_USER;
+  const pass = process.env.EMAIL_PASS;
+  if (!user || !pass) {
+    console.warn("[EMAIL] Faltan EMAIL_USER o EMAIL_PASS: no se envió el correo.");
     return;
   }
+
+  const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: { user, pass },
+  });
 
   const rows = order.items
     .map(
@@ -79,16 +85,15 @@ export async function sendOrderEmail(order: OrderEmailData) {
   ].join("\n");
 
   try {
-    const resend = new Resend(apiKey);
-    const { error } = await resend.emails.send({
-      from: process.env.EMAIL_FROM ?? "Kinzha Audiovisuals <onboarding@resend.dev>",
+    const info = await transporter.sendMail({
+      from: `"kinzhaaudiovisuals@gmail.com" <${user}>`, 
       to: order.customerEmail,
       subject: `Pedido ${order.orderNumber} recibido - Kinzha Audiovisuals`,
       html,
       text,
     });
-    if (error) console.error("[EMAIL_ERROR]", error);
+    console.log("[EMAIL] Correo enviado con éxito:", info.messageId);
   } catch (error) {
-    console.error("[EMAIL_ERROR]", error);
+    console.error("[EMAIL_ERROR] Error al enviar:", error);
   }
 }

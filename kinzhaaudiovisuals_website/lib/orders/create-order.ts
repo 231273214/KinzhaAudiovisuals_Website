@@ -5,6 +5,7 @@ import { db } from "@/lib/db";
 import { OrderError } from "./errors";
 import { generateOrderNumber } from "./number";
 import type { CheckoutInput } from "./schema";
+import { sendOrderEmail } from "@/lib/email/send-order-email"; 
 
 type Line = {
   productId: string;
@@ -68,7 +69,7 @@ export async function createOrder(input: CheckoutInput) {
 
   for (let attempt = 1; ; attempt++) {
     try {
-      return await db.$transaction(
+      const order = await db.$transaction(
         async (tx) => {
           for (const line of lines) {
             const { count } = await tx.stockItem.updateMany({
@@ -126,6 +127,19 @@ export async function createOrder(input: CheckoutInput) {
           timeout: 20000,
         },
       );
+
+      sendOrderEmail({
+        orderNumber: order.orderNumber,
+        total: order.total,
+        customerName: order.customerName,
+        customerEmail: order.customerEmail,
+        shippingAddress: order.shippingAddress,
+        city: order.city,
+        items: order.items,
+      }).catch((err) => console.error("Fallo al enviar correo post-compra", err));
+
+      return order;
+
     } catch (error) {
       if (isUniqueViolation(error) && attempt < 3) continue;
       throw error;

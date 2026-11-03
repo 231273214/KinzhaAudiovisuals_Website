@@ -22,7 +22,7 @@ export default function CadenceOfShadowsPage() {
         <FilmOverlay />
 
         <Link
-          href="/productos"
+          href="/#proyectos"
           aria-label="Volver a Productos"
           className="fixed left-4 top-4 z-[60] border border-brand-red/70 bg-black/60 px-4 py-2 font-typewriter text-[11px] uppercase tracking-[0.3em] text-noir-paper backdrop-blur-sm transition-colors hover:border-brand-red hover:bg-brand-red hover:text-white"
         >
