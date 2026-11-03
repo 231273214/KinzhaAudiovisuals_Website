@@ -231,7 +231,7 @@ export function ClosingPage({ page }: { page: Of<"closing"> }) {
       <h2 className="bk-h1 -skew-x-6 font-comic font-bold">{page.title}</h2>
       <p className="bk-body max-w-[70cqw] text-white/70">{page.text}</p>
       <Link
-        href="/productos"
+        href="/#proyectos"
         className="bk-small mt-[2cqw] rounded-full border border-white/40 px-[4cqw] py-[1.4cqw] font-comic tracking-widest transition-colors hover:bg-white hover:text-black"
       >
         Volver a Productos

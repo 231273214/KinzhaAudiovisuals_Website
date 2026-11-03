@@ -9,7 +9,7 @@ export default function Hero() {
         <PageTitle />
 
         <div className="relative mt-16 flex flex-col items-center">
-          <div className="relative aspect-square w-[clamp(260px,52vw,520px)] overflow-hidden rounded-full bg-brand-red-dark bg-[url('/images/fondo-rojo.png')] bg-cover bg-center shadow-[0_6px_0_rgba(255,255,255,0.15)]">
+          <div className="relative aspect-square w-[clamp(260px,52vw,520px)] overflow-hidden rounded-full bg-brand-red-dark bg-cover bg-center shadow-[0_6px_0_rgba(255,255,255,0.15)]">
             <Image
               src="/images/logo_kinsha.png"
               alt="Lagarto de Kinzha Audiovisuals"
