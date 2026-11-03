@@ -79,6 +79,7 @@ export function CharacterFile({ character: c, active }: Props) {
         </div>
 
         <div className="mt-[2.5cqw] h-[2cqw] bg-neutral-700" />
+        
         <div className="relative h-[17cqw] w-full border border-black/80">
           <div className="absolute inset-0 grid grid-cols-4 divide-x divide-black/70" aria-hidden>
             {Array.from({ length: 4 }, (_, i) => (
@@ -87,16 +88,19 @@ export function CharacterFile({ character: c, active }: Props) {
           </div>
           
           {c.fingerprints && c.fingerprints.length > 0 && (
-            <div className="absolute inset-0 grid grid-cols-4">
+            // 👇 1. Agregamos grid-rows-1 para que las celdas tomen la altura del contenedor
+            <div className="absolute inset-0 grid grid-cols-4 grid-rows-1">
               {c.fingerprints.map((fp, index) => (
-                <Photo 
-                  key={index} 
-                  src={fp} 
-                  alt={`Huella dactilar ${index + 1}`} 
-                  fit="contain" 
-                  className="h-full w-full" 
-                  sizes="100px" 
-                />
+                // 👇 2. Envolvemos la foto en un div relativo h-full w-full
+                <div key={index} className="relative h-full w-full">
+                  <Photo 
+                    src={fp} 
+                    alt={`Huella dactilar ${index + 1}`} 
+                    fit="contain" 
+                    className="h-full w-full" 
+                    sizes="100px" 
+                  />
+                </div>
               ))}
             </div>
           )}
@@ -107,6 +111,7 @@ export function CharacterFile({ character: c, active }: Props) {
             </div>
           )}
         </div>
+        
         <div className="mt-[1cqw] grid grid-cols-2 gap-[4cqw] text-[3cqw]">
           <div className="border-b border-black/80 pb-[0.5cqw]">&nbsp;</div>
           <div className="border-b border-black/80 pb-[0.5cqw] text-center italic">{c.signature ?? "\u00a0"}</div>

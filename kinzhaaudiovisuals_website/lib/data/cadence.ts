@@ -216,9 +216,9 @@ export const CHARACTERS: Character[] = [
 /*  Mood board  */
 const M = `${CADENCE_IMG}/mood_board`;
 
-export const MOOD_CHARACTERS = Array.from({ length: 6 }, (_, i) => `${M}/personajes/img_${i + 1}.png`);
+export const MOOD_CHARACTERS = Array.from({ length: 9 }, (_, i) => `${M}/personajes/img_${i + 1}.png`);
 
-export const MOOD_SCENES = Array.from({ length: 8 }, (_, i) => `${M}/Escenarios/mood_${i + 1}.png`);
+export const MOOD_SCENES = Array.from({ length: 9 }, (_, i) => `${M}/Escenarios/mood_${i + 1}.png`);
 
 /* Escenarios */
 const E = `${M}/Escenarios_2`;
@@ -248,10 +248,14 @@ export const SCENARIOS: Scenario[] = [
 ];
 
 /* Identidad */
+/* Identidad */
 export const IDENTITY = {
-  silhouette: `${CADENCE_IMG}/identidad/silueta.png`,
+  logos: [
+    `${CADENCE_IMG}/ideas_logo_juego/logo_1.png`,
+    `${CADENCE_IMG}/ideas_logo_juego/logo_2.png`
+  ],
   palette: ["#686868", "#000000", "#ffffff"],
-  fonts: ["Special Elite"],
+  fonts: ["Special Elite","Mom's Typewriter"],
 };
 
 /*  Portada */

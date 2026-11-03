@@ -7,10 +7,16 @@ export function IdentityLeft() {
   return (
     <Paper side="left">
       <div className="flex size-full flex-col px-[6cqw] py-[6cqw]">
-        <div className="relative flex-1 bg-black">
-          <Photo src={IDENTITY.silhouette} alt="Silueta del detective Fonseca" className="absolute inset-0" sizes="45vw" />
-          <TitleLockup className="absolute bottom-[3cqw] left-[8cqw] text-[5.5cqw]" invert />
+        <div className="relative w-full aspect-[4/5] bg-[#e6e6e6] border border-black/10 shadow-inner overflow-hidden">
+          <Photo 
+            src={IDENTITY.logos[0]} 
+            alt="Logo Principal" 
+            fit="contain" 
+            className="h-full w-full"
+            sizes="45vw" 
+          />
         </div>
+        
         <div className="mt-[3cqw] grid grid-cols-2 gap-[3cqw] text-[2.2cqw] uppercase">
           <div>
             <p>Paleta de colores:</p>
@@ -41,10 +47,15 @@ export function IdentityRight() {
   return (
     <Paper side="right">
       <div className="flex size-full flex-col items-center justify-center gap-[5cqw] px-[6cqw] py-[6cqw]">
-        <div className="relative aspect-[4/5] w-[88%] overflow-hidden rounded-[12cqw] bg-black transition-transform duration-500 hover:-rotate-1 hover:scale-[1.02]">
-          <Photo src={IDENTITY.silhouette} alt="Ícono de la app" className="absolute inset-0" sizes="45vw" />
+        <div className="relative aspect-[4/5] w-[70%] overflow-hidden rounded-[3cqw] bg-[#e6e6e6] border border-black/10 shadow-inner transition-transform duration-500 hover:-rotate-1 hover:scale-[1.02]">
+          <Photo 
+            src={IDENTITY.logos[1]} 
+            alt="Ícono de la app" 
+            fit="contain" 
+            className="h-full w-full"
+            sizes="45vw" 
+          />
         </div>
-        <TitleLockup className="text-[5cqw]" />
       </div>
     </Paper>
   );
