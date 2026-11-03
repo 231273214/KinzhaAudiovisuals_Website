@@ -33,6 +33,7 @@ export default function Navbar() {
             {isOpen ? <X size={22} /> : <Menu size={22} />} 
           </button>
 
+          {/* Enlaces Desktop */}
           <ul className="hidden md:flex items-center gap-8">
             {NAV_LINKS.map(({ href, label }) => (
               <li key={href}>
@@ -48,13 +49,18 @@ export default function Navbar() {
             ))}
           </ul>
 
+          {/* Carrito y Logo */}
           <div className="flex items-center gap-5">
             <CartIconLink />
-            <ScrollTopLink href="/" className="block" aria-label="Kinzha Inicio">
-              <Image src="/images/logo_kinsha.png" alt="Kinzha" width={22} height={22} />
-            </ScrollTopLink>
+            
+            {pathname !== "/" && (
+              <ScrollTopLink href="/" className="block" aria-label="Kinzha Inicio">
+                <Image src="/images/logo_kinsha.png" alt="Kinzha" width={22} height={22} />
+              </ScrollTopLink>
+            )}
           </div>
 
+          {/* Menú desplegable móvil */}
           <AnimatePresence>
             {isOpen && (
               <motion.div

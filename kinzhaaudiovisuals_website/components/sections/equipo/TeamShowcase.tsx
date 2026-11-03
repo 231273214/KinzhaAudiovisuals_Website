@@ -4,6 +4,7 @@ import { useState } from "react";
 import Container from "@/components/ui/Container";
 import TeamCard from "@/components/sections/equipo/TeamCard";
 import { TEAM } from "@/lib/data/team";
+import { ArrowUpRight } from "lucide-react";
 
 export default function TeamShowcase() {
   const [selectedId, setSelectedId] = useState<string | null>(null);
@@ -56,6 +57,16 @@ export default function TeamShowcase() {
                 </div>
 
                 <p className="mt-4 max-w-[560px] text-sm leading-relaxed">{selected.bio}</p>
+                {selected.portfolio && (
+                  <a
+                    href={selected.portfolio}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-4 flex items-center gap-2 text-brand-red hover:text-brand-soft transition-colors"
+                  >
+                    Ver portafolio <ArrowUpRight className="size-4" />
+                  </a>
+                )}
               </article>
             )}
           </div>

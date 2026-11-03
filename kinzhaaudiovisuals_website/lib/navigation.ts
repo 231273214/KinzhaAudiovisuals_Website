@@ -4,7 +4,6 @@ export const GMAIL_COMPOSE_URL = `https://mail.google.com/mail/?view=cm&fs=1&to=
 export const NAV_LINKS = [
   { href: "/", label: "HOME" },
   { href: "/servicios", label: "SERVICIOS" },
-  { href: "/equipo", label: "EQUIPO" },
   { href: "/productos", label: "PRODUCTOS" },
   { href: "/contacto", label: "CONTACTO" },
 ] as const;
