@@ -1,28 +1,29 @@
 import Image from "next/image";
 import Container from "@/components/ui/Container";
-import PageTitle from "@/components/ui/PageTitle";
+
+const LOGO_SRC = "/images/logo_kinzha.png";
 
 export default function Hero() {
   return (
-    <section className="pb-24 pt-12">
+    <section className="pb-20 pt-10 lg:pb-28 lg:pt-16">
       <Container>
-        <PageTitle />
+        <div className="flex flex-col items-center gap-10 text-center lg:grid lg:grid-cols-2 lg:gap-8 lg:text-left">
+          <h1 className="font-brand text-[clamp(3rem,12vw,10rem)] leading-[0.95]">
+            Kinzha
+            <br />
+            audiovisuals
+          </h1>
 
-        <div className="relative mt-16 flex flex-col items-center">
-          <div className="relative aspect-square w-[clamp(260px,52vw,520px)] overflow-hidden rounded-full bg-brand-red-dark bg-cover bg-center shadow-[0_6px_0_rgba(255,255,255,0.15)]">
+          <div className="relative aspect-square w-[min(78vw,380px)] max-lg:order-first lg:ml-auto lg:w-[clamp(340px,40vw,600px)]">
             <Image
-              src="/images/logo_kinsha.png"
-              alt="Lagarto de Kinzha Audiovisuals"
+              src={LOGO_SRC}
+              alt="Logo de Kinzha Audiovisuals: una K roja con un lagarto"
               fill
               priority
-              sizes="(min-width: 1000px) 520px, 52vw"
-              className="object-cover"
+              sizes="(min-width: 1024px) 40vw, 78vw"
+              className="object-contain"
             />
           </div>
-
-          <p className="mt-6 max-w-[190px] text-center text-xs leading-snug md:absolute md:bottom-[18%] md:left-0 md:mt-0 md:text-left">
-            Enfocados en crear experiencias audio visuales para la vida, no para el momento.
-          </p>
         </div>
       </Container>
     </section>

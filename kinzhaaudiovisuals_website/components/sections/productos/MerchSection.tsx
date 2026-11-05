@@ -16,8 +16,8 @@ export default function MerchSection() {
 
   return (
     <section id="productos">
-      <Container className="pb-32">
-        <SectionHeading className="text-center">
+      <Container className="pb-24 pt-16 lg:pb-32 lg:pt-24">
+        <SectionHeading className="text-center mb-8">
           MERCANCÍA & COLECCIONABLES
         </SectionHeading>
 

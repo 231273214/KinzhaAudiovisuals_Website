@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function ProductosPage() {
   return (
     <>
-      <section className="pt-12">
+      <section className="pt-20">
         <Container>
           <PageTitle />
         </Container>

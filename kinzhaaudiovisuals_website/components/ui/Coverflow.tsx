@@ -33,7 +33,7 @@ export default function Coverflow({ items, active, onChange }: Props) {
       }}
     >
       <div
-        className="relative mx-auto aspect-[4/3] w-full max-w-[560px] touch-pan-y select-none"
+        className="relative mx-auto aspect-[4/3] w-full max-w-[560px] touch-pan-y select-none overflow-x-clip"
         onPointerDown={(e) => {
           startX.current = e.clientX;
         }}

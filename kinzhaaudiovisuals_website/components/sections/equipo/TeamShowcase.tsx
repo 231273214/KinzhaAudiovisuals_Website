@@ -1,10 +1,13 @@
 "use client";
 
+import { ArrowUpRight } from "lucide-react";
 import { useState } from "react";
 import Container from "@/components/ui/Container";
 import TeamCard from "@/components/sections/equipo/TeamCard";
 import { TEAM } from "@/lib/data/team";
-import { ArrowUpRight } from "lucide-react";
+
+const MAX_CARD = 240; 
+const GAP = 16;
 
 export default function TeamShowcase() {
   const [selectedId, setSelectedId] = useState<string | null>(null);
@@ -14,10 +17,13 @@ export default function TeamShowcase() {
     <section>
       <Container className="pb-32">
         <div
-          className="mx-auto w-fit"
-          style={{ "--card-w": "clamp(88px, 18vw, 240px)" } as React.CSSProperties}
+          className="@container mx-auto w-full"
+          style={{ maxWidth: `${TEAM.length * MAX_CARD + (TEAM.length - 1) * GAP + 64}px` }}
         >
-          <ul className="flex items-start gap-0.1 pb-[calc(var(--card-w)*0.5)] md:gap-0.1">
+          <ul
+            className="grid items-start gap-2 px-3 pb-[12cqw] md:gap-4 md:px-8"
+            style={{ gridTemplateColumns: `repeat(${TEAM.length}, minmax(0, 1fr))` }}
+          >
             {TEAM.map((member, i) => (
               <TeamCard
                 key={member.id}
@@ -31,7 +37,7 @@ export default function TeamShowcase() {
             ))}
           </ul>
 
-          <div aria-live="polite" className="min-h-72">
+          <div aria-live="polite" className="min-h-72 px-3 md:px-8">
             {selected && (
               <article
                 key={selected.id}
@@ -62,7 +68,7 @@ export default function TeamShowcase() {
                     href={selected.portfolio}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-4 flex items-center gap-2 text-brand-red hover:text-brand-soft transition-colors"
+                    className="mt-4 flex items-center gap-2 text-brand-red transition-colors hover:text-brand-soft"
                   >
                     Ver portafolio <ArrowUpRight className="size-4" />
                   </a>
