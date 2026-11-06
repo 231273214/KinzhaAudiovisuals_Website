@@ -55,7 +55,7 @@ export default function Navbar() {
             
             {pathname !== "/" && (
               <ScrollTopLink href="/" className="block" aria-label="Kinzha Inicio">
-                <Image src="/images/logo_kinsha.png" alt="Kinzha" width={22} height={22} />
+                <Image src="/images/logo_navbar.png" alt="Kinzha" width={22} height={22} />
               </ScrollTopLink>
             )}
           </div>

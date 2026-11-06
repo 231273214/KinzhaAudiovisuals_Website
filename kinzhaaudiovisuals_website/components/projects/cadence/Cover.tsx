@@ -27,7 +27,7 @@ export function Cover({ onOpen }: { onOpen: () => void }) {
           fill
           priority
           sizes="100vw"
-          className="object-cover object-[65%_center]"
+          className="object-contain object-center md:object-cover md:object-[65%_center]"
         />
       </motion.div>
 
