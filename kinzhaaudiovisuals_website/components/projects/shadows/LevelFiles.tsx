@@ -7,7 +7,7 @@ export default function LevelFiles() {
       aria-labelledby="levels-title"
       className="mx-auto max-w-6xl px-6 py-24"
     >
-      <p className="font-mono text-xs uppercase tracking-[0.3em] text-[#d69e2e]">
+      <p className="font-mono text-xs uppercase tracking-[0.3em] text-amber-glow">
         Archivo clasificado
       </p>
       <h2
