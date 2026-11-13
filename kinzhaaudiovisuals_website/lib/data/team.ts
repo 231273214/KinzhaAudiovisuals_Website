@@ -16,7 +16,7 @@ export const TEAM: TeamMember[] = [
     image: "/images/team/sergio.png",
     skills: ["Artista 3D", "Envioroment artist", "programador frontend"],
     bio: "Ha trabajado en el videojuego cadence of shadows como el artista 3D creando el modelado de la ciudad y los assets de esta misma y en el podcats wiretap como locurtor y editor secundario del mismo.",
-    portfolio: "https://tu-link-aqui.com",
+    portfolio: "https://portfolio-f6bh.vercel.app/",
   },
   {
     id: "mauricio",
@@ -24,7 +24,7 @@ export const TEAM: TeamMember[] = [
     image: "/images/team/mauricio.png",
     skills: ["Unreal", "UX / UI", "Programador full stack"],
     bio: "Ha trabajado en el videojuego Cadence of Shadows como el programador, creando sistemas de IA de enemigos, sistemas de armas e inventario, sistemas de vida y ataque.",
-    portfolio: "https://tu-link-aqui.com",
+    portfolio: "https://alekxander-portfolio.vercel.app/",
   },
   {
     id: "camilo",
@@ -32,14 +32,13 @@ export const TEAM: TeamMember[] = [
     image: "/images/team/camilo.jpeg",
     skills: ["Artista 2D", "UX/UI", "Artista pixel art"],
     bio: "Ha trabajado en el videojuego cadence of shadows creando los sprites del personaje principal, villanos, personajes secundarios, creo texturas de algunos edificios de la ciudad y sprites de algunos assets.",
-    portfolio: "https://tu-link-aqui.com",
+    portfolio: "https://portafolio-hazel-kappa.vercel.app/",
   },
   {
     id: "axel",
     name: "Axel",
     image: "/images/team/axel.jpeg",
     skills: ["Artista 3D", "UX/UI", "Artista pixel art"],
-    bio: "Ha trabajado en el videojuego cadence of shadows creando las texturas de algunos edificios de la ciudad y sprites de algunos assets de interiores y elementos como armas y alimentos. Tambien trabajo en el podcast wire tap como locutor y editor principal.",
-    portfolio: "https://tu-link-aqui.com",
+    bio: "Ha trabajado en el videojuego cadence of shadows creando las texturas de algunos edificios de la ciudad y sprites de algunos assets de interiores y elementos como armas y alimentos. Tambien trabajo en el podcast wire tap como locutor y editor principal."
   },
 ];
