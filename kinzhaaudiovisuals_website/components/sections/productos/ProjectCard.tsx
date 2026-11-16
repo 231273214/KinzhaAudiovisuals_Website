@@ -27,7 +27,7 @@ export default function ProjectCard({ project }: { project: Project }) {
       <div
         className="absolute inset-x-0 bottom-0 flex translate-y-6 flex-col gap-2 p-5 opacity-0 transition-all duration-500 ease-out group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:translate-y-0 group-focus-within:opacity-100 [@media(hover:none)]:translate-y-0 [@media(hover:none)]:opacity-100"
       >
-        <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#d69e2e]">
+        <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#B00000]">
           {project.type}
         </span>
         <h3 className="text-2xl font-bold uppercase tracking-wide text-[#e2e8f0]">

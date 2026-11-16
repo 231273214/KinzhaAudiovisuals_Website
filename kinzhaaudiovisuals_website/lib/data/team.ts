@@ -29,7 +29,7 @@ export const TEAM: TeamMember[] = [
   {
     id: "camilo",
     name: "Camilo",
-    image: "/images/team/camilo.jpeg",
+    image: "/images/team/camilo.png",
     skills: ["Artista 2D", "UX/UI", "Artista pixel art"],
     bio: "Ha trabajado en el videojuego cadence of shadows creando los sprites del personaje principal, villanos, personajes secundarios, creo texturas de algunos edificios de la ciudad y sprites de algunos assets.",
     portfolio: "https://portafolio-hazel-kappa.vercel.app/",
@@ -37,7 +37,7 @@ export const TEAM: TeamMember[] = [
   {
     id: "axel",
     name: "Axel",
-    image: "/images/team/axel.jpeg",
+    image: "/images/team/axel.png",
     skills: ["Artista 3D", "UX/UI", "Artista pixel art"],
     bio: "Ha trabajado en el videojuego cadence of shadows creando las texturas de algunos edificios de la ciudad y sprites de algunos assets de interiores y elementos como armas y alimentos. Tambien trabajo en el podcast wire tap como locutor y editor principal."
   },
